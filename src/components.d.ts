@@ -5,33 +5,291 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ChatContact } from "./components/chat-layout/chat-layout";
+export { ChatContact } from "./components/chat-layout/chat-layout";
 export namespace Components {
-    interface TruhlarAmbulanceWeList {
+    interface AppHeader {
+    }
+    interface AppLayout {
+    }
+    interface AppSidebar {
+        /**
+          * @default 'messages'
+         */
+        "activeLayout": 'messages' | 'archive' | 'medical-records' | 'examinations' | 'trash';
+    }
+    interface ArchiveLayout {
+    }
+    interface ChatLayout {
+        /**
+          * Kontakt (pacient) – z messages-layout
+          * @default null
+         */
+        "contact": ChatContact | null;
+    }
+    interface ExaminationsLayout {
+    }
+    interface ListItem {
+        /**
+          * @default 'Active'
+         */
+        "chipLabel": string;
+        /**
+          * @default 'John Doe'
+         */
+        "name": string;
+        /**
+          * @default 'NEW'
+         */
+        "status": 'NEW' | 'READ' | 'ARCHIVED' | 'REVOKED';
+        /**
+          * @default 'Nová správa od kontaktu ... '
+         */
+        "text": string;
+    }
+    interface MedicalRecordsLayout {
+    }
+    interface MessagesLayout {
+    }
+    interface SidebarItem {
+        "icon": string;
+        /**
+          * @default false
+         */
+        "isActive": boolean;
+        "label": string;
+    }
+    interface TrashLayout {
     }
 }
+export interface AppSidebarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAppSidebarElement;
+}
+export interface ChatLayoutCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLChatLayoutElement;
+}
+export interface MessagesLayoutCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMessagesLayoutElement;
+}
 declare global {
-    interface HTMLTruhlarAmbulanceWeListElement extends Components.TruhlarAmbulanceWeList, HTMLStencilElement {
+    interface HTMLAppHeaderElement extends Components.AppHeader, HTMLStencilElement {
     }
-    var HTMLTruhlarAmbulanceWeListElement: {
-        prototype: HTMLTruhlarAmbulanceWeListElement;
-        new (): HTMLTruhlarAmbulanceWeListElement;
+    var HTMLAppHeaderElement: {
+        prototype: HTMLAppHeaderElement;
+        new (): HTMLAppHeaderElement;
+    };
+    interface HTMLAppLayoutElement extends Components.AppLayout, HTMLStencilElement {
+    }
+    var HTMLAppLayoutElement: {
+        prototype: HTMLAppLayoutElement;
+        new (): HTMLAppLayoutElement;
+    };
+    interface HTMLAppSidebarElementEventMap {
+        "layoutSelect": 'messages' | 'archive' | 'medical-records' | 'examinations' | 'trash';
+    }
+    interface HTMLAppSidebarElement extends Components.AppSidebar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAppSidebarElementEventMap>(type: K, listener: (this: HTMLAppSidebarElement, ev: AppSidebarCustomEvent<HTMLAppSidebarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAppSidebarElementEventMap>(type: K, listener: (this: HTMLAppSidebarElement, ev: AppSidebarCustomEvent<HTMLAppSidebarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAppSidebarElement: {
+        prototype: HTMLAppSidebarElement;
+        new (): HTMLAppSidebarElement;
+    };
+    interface HTMLArchiveLayoutElement extends Components.ArchiveLayout, HTMLStencilElement {
+    }
+    var HTMLArchiveLayoutElement: {
+        prototype: HTMLArchiveLayoutElement;
+        new (): HTMLArchiveLayoutElement;
+    };
+    interface HTMLChatLayoutElementEventMap {
+        "back": void;
+    }
+    interface HTMLChatLayoutElement extends Components.ChatLayout, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLChatLayoutElementEventMap>(type: K, listener: (this: HTMLChatLayoutElement, ev: ChatLayoutCustomEvent<HTMLChatLayoutElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLChatLayoutElementEventMap>(type: K, listener: (this: HTMLChatLayoutElement, ev: ChatLayoutCustomEvent<HTMLChatLayoutElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLChatLayoutElement: {
+        prototype: HTMLChatLayoutElement;
+        new (): HTMLChatLayoutElement;
+    };
+    interface HTMLExaminationsLayoutElement extends Components.ExaminationsLayout, HTMLStencilElement {
+    }
+    var HTMLExaminationsLayoutElement: {
+        prototype: HTMLExaminationsLayoutElement;
+        new (): HTMLExaminationsLayoutElement;
+    };
+    interface HTMLListItemElement extends Components.ListItem, HTMLStencilElement {
+    }
+    var HTMLListItemElement: {
+        prototype: HTMLListItemElement;
+        new (): HTMLListItemElement;
+    };
+    interface HTMLMedicalRecordsLayoutElement extends Components.MedicalRecordsLayout, HTMLStencilElement {
+    }
+    var HTMLMedicalRecordsLayoutElement: {
+        prototype: HTMLMedicalRecordsLayoutElement;
+        new (): HTMLMedicalRecordsLayoutElement;
+    };
+    interface HTMLMessagesLayoutElementEventMap {
+        "contactSelect": { id: string; name: string };
+    }
+    interface HTMLMessagesLayoutElement extends Components.MessagesLayout, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMessagesLayoutElementEventMap>(type: K, listener: (this: HTMLMessagesLayoutElement, ev: MessagesLayoutCustomEvent<HTMLMessagesLayoutElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMessagesLayoutElementEventMap>(type: K, listener: (this: HTMLMessagesLayoutElement, ev: MessagesLayoutCustomEvent<HTMLMessagesLayoutElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMessagesLayoutElement: {
+        prototype: HTMLMessagesLayoutElement;
+        new (): HTMLMessagesLayoutElement;
+    };
+    interface HTMLSidebarItemElement extends Components.SidebarItem, HTMLStencilElement {
+    }
+    var HTMLSidebarItemElement: {
+        prototype: HTMLSidebarItemElement;
+        new (): HTMLSidebarItemElement;
+    };
+    interface HTMLTrashLayoutElement extends Components.TrashLayout, HTMLStencilElement {
+    }
+    var HTMLTrashLayoutElement: {
+        prototype: HTMLTrashLayoutElement;
+        new (): HTMLTrashLayoutElement;
     };
     interface HTMLElementTagNameMap {
-        "truhlar-ambulance-we-list": HTMLTruhlarAmbulanceWeListElement;
+        "app-header": HTMLAppHeaderElement;
+        "app-layout": HTMLAppLayoutElement;
+        "app-sidebar": HTMLAppSidebarElement;
+        "archive-layout": HTMLArchiveLayoutElement;
+        "chat-layout": HTMLChatLayoutElement;
+        "examinations-layout": HTMLExaminationsLayoutElement;
+        "list-item": HTMLListItemElement;
+        "medical-records-layout": HTMLMedicalRecordsLayoutElement;
+        "messages-layout": HTMLMessagesLayoutElement;
+        "sidebar-item": HTMLSidebarItemElement;
+        "trash-layout": HTMLTrashLayoutElement;
     }
 }
 declare namespace LocalJSX {
-    interface TruhlarAmbulanceWeList {
+    interface AppHeader {
     }
+    interface AppLayout {
+    }
+    interface AppSidebar {
+        /**
+          * @default 'messages'
+         */
+        "activeLayout"?: 'messages' | 'archive' | 'medical-records' | 'examinations' | 'trash';
+        "onLayoutSelect"?: (event: AppSidebarCustomEvent<'messages' | 'archive' | 'medical-records' | 'examinations' | 'trash'>) => void;
+    }
+    interface ArchiveLayout {
+    }
+    interface ChatLayout {
+        /**
+          * Kontakt (pacient) – z messages-layout
+          * @default null
+         */
+        "contact"?: ChatContact | null;
+        "onBack"?: (event: ChatLayoutCustomEvent<void>) => void;
+    }
+    interface ExaminationsLayout {
+    }
+    interface ListItem {
+        /**
+          * @default 'Active'
+         */
+        "chipLabel"?: string;
+        /**
+          * @default 'John Doe'
+         */
+        "name"?: string;
+        /**
+          * @default 'NEW'
+         */
+        "status"?: 'NEW' | 'READ' | 'ARCHIVED' | 'REVOKED';
+        /**
+          * @default 'Nová správa od kontaktu ... '
+         */
+        "text"?: string;
+    }
+    interface MedicalRecordsLayout {
+    }
+    interface MessagesLayout {
+        "onContactSelect"?: (event: MessagesLayoutCustomEvent<{ id: string; name: string }>) => void;
+    }
+    interface SidebarItem {
+        "icon"?: string;
+        /**
+          * @default false
+         */
+        "isActive"?: boolean;
+        "label"?: string;
+    }
+    interface TrashLayout {
+    }
+
+    interface AppSidebarAttributes {
+        "activeLayout": 'messages' | 'archive' | 'medical-records' | 'examinations' | 'trash';
+    }
+    interface ListItemAttributes {
+        "chipLabel": string;
+        "status": 'NEW' | 'READ' | 'ARCHIVED' | 'REVOKED';
+        "name": string;
+        "text": string;
+    }
+    interface SidebarItemAttributes {
+        "label": string;
+        "icon": string;
+        "isActive": boolean;
+    }
+
     interface IntrinsicElements {
-        "truhlar-ambulance-we-list": TruhlarAmbulanceWeList;
+        "app-header": AppHeader;
+        "app-layout": AppLayout;
+        "app-sidebar": Omit<AppSidebar, keyof AppSidebarAttributes> & { [K in keyof AppSidebar & keyof AppSidebarAttributes]?: AppSidebar[K] } & { [K in keyof AppSidebar & keyof AppSidebarAttributes as `attr:${K}`]?: AppSidebarAttributes[K] } & { [K in keyof AppSidebar & keyof AppSidebarAttributes as `prop:${K}`]?: AppSidebar[K] };
+        "archive-layout": ArchiveLayout;
+        "chat-layout": ChatLayout;
+        "examinations-layout": ExaminationsLayout;
+        "list-item": Omit<ListItem, keyof ListItemAttributes> & { [K in keyof ListItem & keyof ListItemAttributes]?: ListItem[K] } & { [K in keyof ListItem & keyof ListItemAttributes as `attr:${K}`]?: ListItemAttributes[K] } & { [K in keyof ListItem & keyof ListItemAttributes as `prop:${K}`]?: ListItem[K] };
+        "medical-records-layout": MedicalRecordsLayout;
+        "messages-layout": MessagesLayout;
+        "sidebar-item": Omit<SidebarItem, keyof SidebarItemAttributes> & { [K in keyof SidebarItem & keyof SidebarItemAttributes]?: SidebarItem[K] } & { [K in keyof SidebarItem & keyof SidebarItemAttributes as `attr:${K}`]?: SidebarItemAttributes[K] } & { [K in keyof SidebarItem & keyof SidebarItemAttributes as `prop:${K}`]?: SidebarItem[K] };
+        "trash-layout": TrashLayout;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "truhlar-ambulance-we-list": LocalJSX.IntrinsicElements["truhlar-ambulance-we-list"] & JSXBase.HTMLAttributes<HTMLTruhlarAmbulanceWeListElement>;
+            "app-header": LocalJSX.IntrinsicElements["app-header"] & JSXBase.HTMLAttributes<HTMLAppHeaderElement>;
+            "app-layout": LocalJSX.IntrinsicElements["app-layout"] & JSXBase.HTMLAttributes<HTMLAppLayoutElement>;
+            "app-sidebar": LocalJSX.IntrinsicElements["app-sidebar"] & JSXBase.HTMLAttributes<HTMLAppSidebarElement>;
+            "archive-layout": LocalJSX.IntrinsicElements["archive-layout"] & JSXBase.HTMLAttributes<HTMLArchiveLayoutElement>;
+            "chat-layout": LocalJSX.IntrinsicElements["chat-layout"] & JSXBase.HTMLAttributes<HTMLChatLayoutElement>;
+            "examinations-layout": LocalJSX.IntrinsicElements["examinations-layout"] & JSXBase.HTMLAttributes<HTMLExaminationsLayoutElement>;
+            "list-item": LocalJSX.IntrinsicElements["list-item"] & JSXBase.HTMLAttributes<HTMLListItemElement>;
+            "medical-records-layout": LocalJSX.IntrinsicElements["medical-records-layout"] & JSXBase.HTMLAttributes<HTMLMedicalRecordsLayoutElement>;
+            "messages-layout": LocalJSX.IntrinsicElements["messages-layout"] & JSXBase.HTMLAttributes<HTMLMessagesLayoutElement>;
+            "sidebar-item": LocalJSX.IntrinsicElements["sidebar-item"] & JSXBase.HTMLAttributes<HTMLSidebarItemElement>;
+            "trash-layout": LocalJSX.IntrinsicElements["trash-layout"] & JSXBase.HTMLAttributes<HTMLTrashLayoutElement>;
         }
     }
 }

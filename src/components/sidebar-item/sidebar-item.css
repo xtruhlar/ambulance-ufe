@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+.sidebar-item-container {
+  display: flex;
+  padding: 15px 20px;
+  align-items: center;
+  border-radius: 10px;
+  margin: 4px 10px;
+  gap: 10px;
+}
+
+.item-text {
+  font-size: 14px;
+  color: #2D3648;
+  font-weight: 500;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.is-active, .is-active .item-text {
+  color: #2d82dc;
+}
+
+.is-active {
+  background-color: rgba(45, 130, 220, 0.1);
+}

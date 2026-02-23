@@ -1,0 +1,37 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.item-container-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.user-icon {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #2D3648;
+  color:aliceblue;
+  padding: 10px;
+  border-radius: 100%;
+  background-color: #2D3648;
+}
+
+.actions-group, .user-profile-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Chip wrapper styling */
+.chip-wrapper {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 10px;
+}

@@ -1,0 +1,26 @@
+:host {
+  display: block;
+}
+
+.box-container {
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  margin: 10px 20px;
+}
+
+.logo-icon {
+  width: 35px;
+  height: auto;
+}
+
+.header-title-text {
+  font-size: 35px;
+  font-weight: 500;
+  color: #4A5468;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
