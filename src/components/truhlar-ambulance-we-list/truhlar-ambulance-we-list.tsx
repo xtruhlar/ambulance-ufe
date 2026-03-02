@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Event, EventEmitter,  Host, h } from '@stencil/core';
 
 @Component({
   tag: 'truhlar-ambulance-we-list',
@@ -7,6 +7,7 @@ import { Component, Host, h } from '@stencil/core';
 })
 export class TruhlarAmbulanceWeList {
   waitingPatients: any[];
+  @Event({ eventName: "entry-clicked"}) entryClicked: EventEmitter<string>;
 
   private async getWaitingPatientsAsync(){
     return await Promise.resolve(
@@ -40,8 +41,8 @@ export class TruhlarAmbulanceWeList {
     return (
       <Host>
         <md-list>
-          {this.waitingPatients.map(patient =>
-            <md-list-item>
+          {this.waitingPatients.map((patient, index) =>
+            <md-list-item onClick={ () => this.entryClicked.emit(index.toString())}>
               <div slot="headline">{patient.name}</div>
               <div slot="supporting-text">{"Predpokladaný vstup: " + patient.estimatedStart?.toLocaleString()}</div>
                 <md-icon slot="start">person</md-icon>
