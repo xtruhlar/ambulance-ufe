@@ -6,9 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface TruhlarAmbulanceWeList {
-    }
     interface XdtAmbulanceWlApp {
+        "ambulanceId": string;
+        "apiBase": string;
         /**
           * @default ""
          */
@@ -17,33 +17,20 @@ export namespace Components {
     interface XdtAmbulanceWlEditor {
         "entryId": string;
     }
-}
-export interface TruhlarAmbulanceWeListCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLTruhlarAmbulanceWeListElement;
+    interface XdtAmbulanceWlList {
+        "ambulanceId": string;
+        "apiBase": string;
+    }
 }
 export interface XdtAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLXdtAmbulanceWlEditorElement;
 }
+export interface XdtAmbulanceWlListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLXdtAmbulanceWlListElement;
+}
 declare global {
-    interface HTMLTruhlarAmbulanceWeListElementEventMap {
-        "entry-clicked": string;
-    }
-    interface HTMLTruhlarAmbulanceWeListElement extends Components.TruhlarAmbulanceWeList, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLTruhlarAmbulanceWeListElementEventMap>(type: K, listener: (this: HTMLTruhlarAmbulanceWeListElement, ev: TruhlarAmbulanceWeListCustomEvent<HTMLTruhlarAmbulanceWeListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLTruhlarAmbulanceWeListElementEventMap>(type: K, listener: (this: HTMLTruhlarAmbulanceWeListElement, ev: TruhlarAmbulanceWeListCustomEvent<HTMLTruhlarAmbulanceWeListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLTruhlarAmbulanceWeListElement: {
-        prototype: HTMLTruhlarAmbulanceWeListElement;
-        new (): HTMLTruhlarAmbulanceWeListElement;
-    };
     interface HTMLXdtAmbulanceWlAppElement extends Components.XdtAmbulanceWlApp, HTMLStencilElement {
     }
     var HTMLXdtAmbulanceWlAppElement: {
@@ -67,17 +54,33 @@ declare global {
         prototype: HTMLXdtAmbulanceWlEditorElement;
         new (): HTMLXdtAmbulanceWlEditorElement;
     };
+    interface HTMLXdtAmbulanceWlListElementEventMap {
+        "entry-clicked": string;
+    }
+    interface HTMLXdtAmbulanceWlListElement extends Components.XdtAmbulanceWlList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLXdtAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLXdtAmbulanceWlListElement, ev: XdtAmbulanceWlListCustomEvent<HTMLXdtAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLXdtAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLXdtAmbulanceWlListElement, ev: XdtAmbulanceWlListCustomEvent<HTMLXdtAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLXdtAmbulanceWlListElement: {
+        prototype: HTMLXdtAmbulanceWlListElement;
+        new (): HTMLXdtAmbulanceWlListElement;
+    };
     interface HTMLElementTagNameMap {
-        "truhlar-ambulance-we-list": HTMLTruhlarAmbulanceWeListElement;
         "xdt-ambulance-wl-app": HTMLXdtAmbulanceWlAppElement;
         "xdt-ambulance-wl-editor": HTMLXdtAmbulanceWlEditorElement;
+        "xdt-ambulance-wl-list": HTMLXdtAmbulanceWlListElement;
     }
 }
 declare namespace LocalJSX {
-    interface TruhlarAmbulanceWeList {
-        "onEntry-clicked"?: (event: TruhlarAmbulanceWeListCustomEvent<string>) => void;
-    }
     interface XdtAmbulanceWlApp {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
         /**
           * @default ""
          */
@@ -87,27 +90,38 @@ declare namespace LocalJSX {
         "entryId"?: string;
         "onEditor-closed"?: (event: XdtAmbulanceWlEditorCustomEvent<string>) => void;
     }
+    interface XdtAmbulanceWlList {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
+        "onEntry-clicked"?: (event: XdtAmbulanceWlListCustomEvent<string>) => void;
+    }
 
     interface XdtAmbulanceWlAppAttributes {
         "basePath": string;
+        "apiBase": string;
+        "ambulanceId": string;
     }
     interface XdtAmbulanceWlEditorAttributes {
         "entryId": string;
     }
+    interface XdtAmbulanceWlListAttributes {
+        "apiBase": string;
+        "ambulanceId": string;
+    }
 
     interface IntrinsicElements {
-        "truhlar-ambulance-we-list": TruhlarAmbulanceWeList;
         "xdt-ambulance-wl-app": Omit<XdtAmbulanceWlApp, keyof XdtAmbulanceWlAppAttributes> & { [K in keyof XdtAmbulanceWlApp & keyof XdtAmbulanceWlAppAttributes]?: XdtAmbulanceWlApp[K] } & { [K in keyof XdtAmbulanceWlApp & keyof XdtAmbulanceWlAppAttributes as `attr:${K}`]?: XdtAmbulanceWlAppAttributes[K] } & { [K in keyof XdtAmbulanceWlApp & keyof XdtAmbulanceWlAppAttributes as `prop:${K}`]?: XdtAmbulanceWlApp[K] };
         "xdt-ambulance-wl-editor": Omit<XdtAmbulanceWlEditor, keyof XdtAmbulanceWlEditorAttributes> & { [K in keyof XdtAmbulanceWlEditor & keyof XdtAmbulanceWlEditorAttributes]?: XdtAmbulanceWlEditor[K] } & { [K in keyof XdtAmbulanceWlEditor & keyof XdtAmbulanceWlEditorAttributes as `attr:${K}`]?: XdtAmbulanceWlEditorAttributes[K] } & { [K in keyof XdtAmbulanceWlEditor & keyof XdtAmbulanceWlEditorAttributes as `prop:${K}`]?: XdtAmbulanceWlEditor[K] };
+        "xdt-ambulance-wl-list": Omit<XdtAmbulanceWlList, keyof XdtAmbulanceWlListAttributes> & { [K in keyof XdtAmbulanceWlList & keyof XdtAmbulanceWlListAttributes]?: XdtAmbulanceWlList[K] } & { [K in keyof XdtAmbulanceWlList & keyof XdtAmbulanceWlListAttributes as `attr:${K}`]?: XdtAmbulanceWlListAttributes[K] } & { [K in keyof XdtAmbulanceWlList & keyof XdtAmbulanceWlListAttributes as `prop:${K}`]?: XdtAmbulanceWlList[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "truhlar-ambulance-we-list": LocalJSX.IntrinsicElements["truhlar-ambulance-we-list"] & JSXBase.HTMLAttributes<HTMLTruhlarAmbulanceWeListElement>;
             "xdt-ambulance-wl-app": LocalJSX.IntrinsicElements["xdt-ambulance-wl-app"] & JSXBase.HTMLAttributes<HTMLXdtAmbulanceWlAppElement>;
             "xdt-ambulance-wl-editor": LocalJSX.IntrinsicElements["xdt-ambulance-wl-editor"] & JSXBase.HTMLAttributes<HTMLXdtAmbulanceWlEditorElement>;
+            "xdt-ambulance-wl-list": LocalJSX.IntrinsicElements["xdt-ambulance-wl-list"] & JSXBase.HTMLAttributes<HTMLXdtAmbulanceWlListElement>;
         }
     }
 }

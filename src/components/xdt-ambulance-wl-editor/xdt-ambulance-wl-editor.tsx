@@ -7,9 +7,7 @@ import { Component, Host, Prop, State, h, EventEmitter, Event } from '@stencil/c
 })
 export class XdtAmbulanceWlEditor {
   @Prop() entryId: string;
-
   @Event({eventName: "editor-closed"}) editorClosed: EventEmitter<string>;
-
   @State() private duration = 15
 
   private handleSliderInput(event: Event) {

@@ -23,6 +23,6 @@ describe('xdt-ambulance-wl-app', () => {
     });
     page.win.navigation = new EventTarget()
     const child = await page.root.shadowRoot.firstElementChild;
-    expect(child.tagName.toLocaleLowerCase()).toEqual("truhlar-ambulance-we-list");
+    expect(child.tagName.toLocaleLowerCase()).toEqual("xdt-ambulance-wl-list");
   });
 });

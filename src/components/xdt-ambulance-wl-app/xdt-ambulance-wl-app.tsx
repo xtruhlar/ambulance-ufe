@@ -12,8 +12,9 @@ declare global {
 
 export class XdtAmbulanceWlApp {
   @State() private relativePath = "";
-
   @Prop() basePath: string="";
+  @Prop() apiBase: string;
+  @Prop() ambulanceId: string;
 
   componentWillLoad() {
     const baseUri = new URL(this.basePath, document.baseURI || "/").pathname;
@@ -56,9 +57,9 @@ render() {
       ? <xdt-ambulance-wl-editor entry-id={entryId}
           oneditor-closed={ () => navigate("./list")} >
         </xdt-ambulance-wl-editor>
-      : <truhlar-ambulance-we-list
+      : <xdt-ambulance-wl-list ambulance-id={this.ambulanceId} api-base={this.apiBase}
           onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } >
-        </truhlar-ambulance-we-list>
+        </xdt-ambulance-wl-list>
       }
     </Host>
   );
