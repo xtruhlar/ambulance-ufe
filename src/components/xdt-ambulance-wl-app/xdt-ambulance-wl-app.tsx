@@ -60,7 +60,6 @@ render() {
           onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } >
         </truhlar-ambulance-we-list>
       }
-
     </Host>
   );
 }
