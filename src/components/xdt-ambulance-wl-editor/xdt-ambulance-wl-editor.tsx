@@ -79,7 +79,7 @@ export class XdtAmbulanceWlEditor {
             + _.estimatedDurationMinutes * 60 * 1000
         )
         .reduce((acc: number, value: number) => Math.max(acc, value), 0);
-      return new Date(Math.min(Date.now(), lastPatientOut));
+      return new Date(Math.max(Date.now(), lastPatientOut));
     } catch (err: any) {
       return new Date();
     }
